@@ -94,3 +94,30 @@
 # /24-12-17
 
 ## 로그인 처리하기 - 직접 만든 세션 적용
+
+# /24-12-18
+
+## 로그인 처리하기 - 서블릿 HTTP세션1
+세션이라는 개념은 대부분의 웹 애플리케이션에 필요한 것이다.
+서블릿은 세션을 위해 HttpSession이라는 기능을 제공하는데, 지금까지 나온 문제들을 해결해준다.
+
+### HttpSession소개
+서블릿이 제공하는 HttpSession도 결국 우리가 직접 만든 SessionManager와 같은 방식으로 동작한다.
+서블릿을 통해 HttpSession을 생성하면 다음과 같은 쿠키를 생성한다.
+쿠키 이름이 JSESSIONID이고, 값은 추정 불가능한 랜덤 값이다.
+
+### 세션 생성과 조회
+세션을 생성하려면 reuqest.getSession(true)를 사용하면 된다.
+public HttpSession getSession(boolean create);
+
+세션의 create 옵션에 대해 알아보자
+- request.getSession(true)
+  - 세션이 있으면 기존 세션을 반환한다.
+  - 세션이 없으면 새로운 세션을 생성해서 반환한다.
+- request.getSession(false)
+  - 세션이 있으면 기존 세션을 반환한다.
+  - 세션이 없으면 새로운 세션을 생성하지 않는다. null을 반환한다.
+
+- request.getSession() : 신규 세션을 생성하는 request.getSession(true)와 동일하다.
+
+
