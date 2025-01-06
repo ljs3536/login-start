@@ -120,7 +120,7 @@ public HttpSession getSession(boolean create);
 
 - request.getSession() : 신규 세션을 생성하는 request.getSession(true)와 동일하다.
 
-# 25-01-01
+# /25-01-01
 
 ## 로그인 처리하기 - 서블릿 HTTP 세션2
 
@@ -140,3 +140,14 @@ URL 전달 방식을 끄고 항상 쿠키를 통해서만 세션을 유지하고
 이렇게 하면 URL에 jsessionid가 노출되지 않는다.
 application.properties
 server.servlet.session.tracking-modes=cookie
+
+# /25-01-06
+
+## 세션 정보와 타임아웃 설정
+
+### 정리
+서블릿의 HttpSession이 제공하는 타임아웃 기능 덕분에 세션을 안전하고 편리하게 사용할 수 있다.
+실무에서 주의할 점은 세션에는 최소한의 데이터만 보관해야 한다는 점이다.
+보관한 데이터 용량 * 사용자 수로 세션의 메모리 사용량이 급격하게 늘어나서 장애로 이어질 수 있다.
+추가로 세션의 시간을 너무 길게 가져가면 메모리 사용이 계속 누적될 수 있으므로 적당한 시간을 선택하는 것이 필요하다.
+기본이 30분이라는 것을 기준으로 고민하면 된다.
